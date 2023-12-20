@@ -1,0 +1,4 @@
+/* Define styles for the selected card */
+.selected {
+  border: 2px solid red;
+}

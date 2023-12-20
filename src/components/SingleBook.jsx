@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import './SingleBook.css';
 
 /* const SingleBook = (props) => {
   const { title, img, price } = props.book;
@@ -20,13 +21,26 @@ import Card from 'react-bootstrap/Card';
 class SingleBook extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      selected: false,
+    };
+
+    this.handleSelected = this.handleSelected.bind(this);
+  }
+
+  handleSelected() {
+    this.setState((prevState) => ({ selected: !prevState.selected }));
   }
 
   render() {
     const { title, img, price } = this.props.book;
 
     return (
-      <Card>
+      <Card
+        onClick={this.handleSelected}
+        className={this.state.selected ? 'selected' : ''}
+      >
         <Card.Img variant='top' src={img} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
