@@ -4,14 +4,15 @@ import MyNav from './components/MyNav';
 import MyFooter from './components/MyFooter';
 import Welcome from './components/Welcome';
 import fantasy from './data/books/fantasy.json'
-import AllTheBooks from './components/AllTheBooks';
+import BookList from './components/BookList';
 
 function App() {
   return (
     <div className="App">
       <MyNav />
       <Welcome />
-      <AllTheBooks category={fantasy} />
+      {/* <AllTheBooks category={fantasy} /> */}
+      <BookList books={fantasy} />
       <MyFooter />
     </div>
   );
