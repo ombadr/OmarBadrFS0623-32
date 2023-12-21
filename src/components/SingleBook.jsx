@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './SingleBook.css';
+import CommentArea from './CommentArea';
 
 /* const SingleBook = (props) => {
   const { title, img, price } = props.book;
@@ -34,20 +35,23 @@ class SingleBook extends Component {
   }
 
   render() {
-    const { title, img, price } = this.props.book;
+    const { title, img, price, asin } = this.props.book;
 
     return (
-      <Card
-        onClick={this.handleSelected}
-        className={this.state.selected ? 'selected' : ''}
-      >
-        <Card.Img variant='top' src={img} />
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{`Price: $${price}`}</Card.Text>
-          <Button variant='primary'>Add to card 🛒</Button>
-        </Card.Body>
-      </Card>
+      <>
+        <Card
+          onClick={this.handleSelected}
+          className={this.state.selected ? 'selected' : ''}
+        >
+          <Card.Img variant='top' src={img} />
+          <Card.Body>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>{`Price: $${price}`}</Card.Text>
+            <Button variant='primary'>Add to card 🛒</Button>
+          </Card.Body>
+        </Card>
+        {this.state.selected && <CommentArea asin={asin} />}
+      </>
     );
   }
 }
