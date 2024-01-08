@@ -31,14 +31,19 @@ class SingleBook extends Component {
 
   handleSelected() {
     this.setState((prevState) => ({ selected: !prevState.selected }));
+
+    this.props.onBookSelect(this.props.book.asin);
   }
 
   render() {
     const { title, img, price, asin } = this.props.book;
+    const { selected } = this.state;
+
+    const cardStyle = selected ? { border: '2px solid red' } : {};
 
     return (
       <>
-        <Card onClick={() => this.props.onBookSelect(asin)}>
+        <Card style={cardStyle} onClick={this.handleSelected}>
           <Card.Img variant='top' src={img} />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
