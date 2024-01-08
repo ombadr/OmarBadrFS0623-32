@@ -33,7 +33,7 @@ class AddComment extends React.Component {
           headers: {
             'Content-Type': 'application/json',
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTcxZjAyODBkOGEyMDAwMThhNDhiMmYiLCJpYXQiOjE3MDMxNjA3MTAsImV4cCI6MTcwNDM3MDMxMH0.BtXNd6xIEcoxpQ6JWiLh8hmtaKgbDZi8RkyAJUi98Jw',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTliZjhmNGUwZGQxZDAwMTgyZDE3MjUiLCJpYXQiOjE3MDQ3MjA2MjgsImV4cCI6MTcwNTkzMDIyOH0.5Zf9Q1qJ4dXzGh70WWz0bhqw3veu5o59t3tohE26Inw',
           },
         }
       );

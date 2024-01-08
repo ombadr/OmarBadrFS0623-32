@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './SingleBook.css';
-import CommentArea from './CommentArea';
 
 /* const SingleBook = (props) => {
   const { title, img, price } = props.book;
@@ -39,10 +38,7 @@ class SingleBook extends Component {
 
     return (
       <>
-        <Card
-          onClick={this.handleSelected}
-          className={this.state.selected ? 'selected' : ''}
-        >
+        <Card onClick={() => this.props.onBookSelect(asin)}>
           <Card.Img variant='top' src={img} />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
@@ -50,7 +46,6 @@ class SingleBook extends Component {
             <Button variant='primary'>Add to card 🛒</Button>
           </Card.Body>
         </Card>
-        {this.state.selected && <CommentArea asin={asin} />}
       </>
     );
   }
