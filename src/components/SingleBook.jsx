@@ -42,7 +42,7 @@ const SingleBook = (props) => {
   //   this.props.onBookSelect(this.props.book.asin);
   // }
 
-  const { title, img, price, asin } = this.props.book;
+  const { title, img, price, asin } = props.book;
 
   const cardStyle = selected ? { border: '2px solid red' } : {};
 
