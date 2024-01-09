@@ -5,50 +5,51 @@ import MyFooter from './components/MyFooter';
 import Welcome from './components/Welcome';
 import fantasy from './data/books/fantasy.json'
 import BookList from './components/BookList';
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import { useState } from 'react';
 import CommentArea from './components/CommentArea';
 import { Container, Row, Col } from 'react-bootstrap';
 
-class App extends Component {
+const App = () => {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedAsin: null
+  const [selectedAsin, setSelectedAsin] = useState(null)
+
+
+  const selectBook = (asin) => {
+    // if (this.state.selectedAsin !== asin) {
+
+    //   this.setState({ selectedAsin: asin })
+    // }
+
+    if (selectedAsin !== asin) {
+
+      setSelectedAsin(asin)
     }
 
-    this.selectBook = this.selectBook.bind(this)
   }
 
-  selectBook(asin) {
-    if (this.state.selectedAsin !== asin) {
 
-      this.setState({ selectedAsin: asin })
-    }
-  }
+  return (
+    <div className="App">
+      <MyNav />
+      <Welcome />
 
-  render() {
-    return (
-      <div className="App">
-        <MyNav />
-        <Welcome />
+      <Container>
+        <Row>
+          <Col>
+            <BookList books={fantasy} onBookSelect={selectBook} />
+          </Col>
+          <Col className='mt-5'>
+            {selectedAsin && <CommentArea asin={selectedAsin} />}
 
-        <Container>
-          <Row>
-            <Col>
-              <BookList books={fantasy} onBookSelect={this.selectBook} />
-            </Col>
-            <Col className='mt-5'>
-              {this.state.selectedAsin && <CommentArea asin={this.state.selectedAsin} />}
-
-            </Col>
-          </Row>
-        </Container>
-        <MyFooter />
-      </div>
-    )
-  }
+          </Col>
+        </Row>
+      </Container>
+      <MyFooter />
+    </div>
+  )
 }
+
 
 // function App() {
 //   return (
