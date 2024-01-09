@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AddComment from './AddComment';
 import CommentList from './CommentList';
 
-class CommentArea extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.asin = props.asin;
-    this.state = {
-      asin: props.asin,
-    };
-  }
+// class CommentArea extends React.Component {
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.asin !== this.props.asin) {
-      this.setState({ asin: this.props.asin });
+const CommentArea = (props) => {
+  const [asin, setAsin] = useState(props.asin);
+
+  useEffect(() => {
+    if (props.asin !== asin) {
+      setAsin(props.asin);
     }
-  }
+  }, [props.asin, asin]);
 
-  render() {
-    return (
-      <>
-        <CommentList asin={this.state.asin} />
-        <AddComment asin={this.state.asin} />
-      </>
-    );
-  }
-}
+  // constructor(props) {
+  //   super(props);
+  //   // this.asin = props.asin;
+  //   this.state = {
+  //     asin: props.asin,
+  //   };
+  // }
+
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.asin !== this.props.asin) {
+  //     this.setState({ asin: this.props.asin });
+  //   }
+  // }
+
+  return (
+    <>
+      <CommentList asin={asin} />
+      <AddComment asin={asin} />
+    </>
+  );
+};
 
 export default CommentArea;
