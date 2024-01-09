@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './SingleBook.css';
+import { useState } from 'react';
 
 /* const SingleBook = (props) => {
   const { title, img, price } = props.book;
@@ -18,42 +19,45 @@ import './SingleBook.css';
 };
  */
 
-class SingleBook extends Component {
-  constructor(props) {
-    super(props);
+const SingleBook = (props) => {
+  const [selected, setSelected] = useState(false);
 
-    this.state = {
-      selected: false,
-    };
+  // constructor(props) {
+  //   super(props);
 
-    this.handleSelected = this.handleSelected.bind(this);
-  }
+  //   this.state = {
+  //     selected: false,
+  //   };
 
-  handleSelected() {
-    this.setState((prevState) => ({ selected: !prevState.selected }));
+  //   this.handleSelected = this.handleSelected.bind(this);
+  // }
 
-    this.props.onBookSelect(this.props.book.asin);
-  }
+  const handleSelected = () => {
+    setSelected((prevSelected) => !prevSelected);
+    props.onBookSelect(props.book.asin);
+  };
+  // handleSelected() {
+  //   this.setState((prevState) => ({ selected: !prevState.selected }));
 
-  render() {
-    const { title, img, price, asin } = this.props.book;
-    const { selected } = this.state;
+  //   this.props.onBookSelect(this.props.book.asin);
+  // }
 
-    const cardStyle = selected ? { border: '2px solid red' } : {};
+  const { title, img, price, asin } = this.props.book;
 
-    return (
-      <>
-        <Card style={cardStyle} onClick={this.handleSelected}>
-          <Card.Img variant='top' src={img} />
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{`Price: $${price}`}</Card.Text>
-            <Button variant='primary'>Add to card 🛒</Button>
-          </Card.Body>
-        </Card>
-      </>
-    );
-  }
-}
+  const cardStyle = selected ? { border: '2px solid red' } : {};
+
+  return (
+    <>
+      <Card style={cardStyle} onClick={handleSelected}>
+        <Card.Img variant='top' src={img} />
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Text>{`Price: $${price}`}</Card.Text>
+          <Button variant='primary'>Add to card 🛒</Button>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
 
 export default SingleBook;
